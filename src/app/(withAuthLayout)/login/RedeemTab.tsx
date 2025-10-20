@@ -1,22 +1,11 @@
 'use client';
 // import { CountryCallingCodeSelector } from '@/components/shared/CountryCallingCodeSelector';
 // import { CountrySelector } from '@/components/shared/CountrySelector';
-import { GlassInput } from '@/components/ui/input';
 // import { useCountryData } from '@/hooks/useCountryData';
 // import { useRegisterPartnerMutation } from '@/redux/api/userApi';
 // import { CountryData } from '@/redux/features/countrySlice';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
-import {
-  FiBriefcase,
-  FiFileText,
-  FiGlobe,
-  FiHome,
-  FiMail,
-  FiMapPin,
-  FiPhone,
-  FiUser,
-} from 'react-icons/fi';
 import { toast } from 'sonner';
 import PrivacyPolicyModal from './PrivacyPolicyModal';
 
@@ -287,7 +276,7 @@ export default function RegisterTab({}: RegisterTabProps) {
     <div>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Company Name */}
-        <div className="space-y-2">
+        {/* <div className="space-y-2">
           <label
             htmlFor="company_name"
             className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
@@ -312,10 +301,9 @@ export default function RegisterTab({}: RegisterTabProps) {
               {errors.company_name}
             </span>
           )}
-        </div>
-
+        </div> */}
         {/* Account Email */}
-        <div className="space-y-2">
+        {/* <div className="space-y-2">
           <label
             htmlFor="account_email"
             className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
@@ -340,10 +328,9 @@ export default function RegisterTab({}: RegisterTabProps) {
               {errors.account_email}
             </span>
           )}
-        </div>
-
+        </div> */}
         {/* CEO Details Section */}
-        <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
+        {/* <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
           <h3 className="text-lg font-semibold text-foreground/90 dark:text-foreground/90 border-b border-gray-200/30 dark:border-gray-700/30 pb-2">
             CEO Details
           </h3>
@@ -430,10 +417,9 @@ export default function RegisterTab({}: RegisterTabProps) {
               </span>
             )}
           </div>
-        </div>
-
+        </div> */}
         {/* Account Manager Details Section */}
-        <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
+        {/* <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
           <h3 className="text-lg font-semibold text-foreground/90 dark:text-foreground/90 border-b border-gray-200/30 dark:border-gray-700/30 pb-2">
             Account Manager Details
           </h3>
@@ -520,289 +506,8 @@ export default function RegisterTab({}: RegisterTabProps) {
               </span>
             )}
           </div>
-        </div>
-
+        </div> */}
         {/* Business and Contact Information Section */}
-        <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
-          <h3 className="text-lg font-semibold text-foreground/90 dark:text-foreground/90 border-b border-gray-200/30 dark:border-gray-700/30 pb-2">
-            Business and Contact Information
-          </h3>
-
-          {/* Calling Code and Phone Number */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div className="space-y-2 md:col-span-4">
-              <label className="block text-sm font-medium text-foreground/90 dark:text-foreground/90">
-                Calling Code *
-              </label>
-              {/* <CountryCallingCodeSelector
-                selectedCountry={selectedCallingCodeCountry}
-                onCountrySelect={handleCallingCodeSelect}
-                placeholder="calling code.."
-                className="h-12"
-              /> */}
-              {errors.country_calling_code && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.country_calling_code}
-                </span>
-              )}
-            </div>
-
-            <div className="space-y-2 md:col-span-8">
-              <label
-                htmlFor="phone_number"
-                className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-              >
-                Phone Number *
-              </label>
-              <div className="relative">
-                <FiPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5 z-10 pointer-events-none" />
-                <GlassInput
-                  type="text"
-                  id="phone_number"
-                  name="phone_number"
-                  value={formData.phone_number}
-                  onChange={handleInputChange}
-                  placeholder="e.g. 123456789"
-                  className="pl-12"
-                  required
-                />
-              </div>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                (phone number only, no country calling code)
-              </span>
-              {errors.phone_number && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.phone_number}
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Address Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label
-                htmlFor="street_address"
-                className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-              >
-                Street Address *
-              </label>
-              <div className="relative">
-                <FiMapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5 z-10 pointer-events-none" />
-                <GlassInput
-                  type="text"
-                  id="street_address"
-                  name="street_address"
-                  value={formData.street_address}
-                  onChange={handleInputChange}
-                  placeholder="123 Main Street"
-                  className="pl-12"
-                  required
-                />
-              </div>
-              {errors.street_address && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.street_address}
-                </span>
-              )}
-            </div>
-            <div className="space-y-2">
-              <label
-                htmlFor="house"
-                className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-              >
-                Street Address 2 (Opt)
-              </label>
-              <div className="relative">
-                <FiHome className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5 z-10 pointer-events-none" />
-                <GlassInput
-                  type="text"
-                  id="street_address_2"
-                  name="street_address_2"
-                  value={formData.street_address_2}
-                  onChange={handleInputChange}
-                  placeholder="Building A, Unit 101"
-                  className="pl-12"
-                />
-              </div>
-              {errors.street_address_2 && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.street_address_2}
-                </span>
-              )}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="space-y-2">
-              <label
-                htmlFor="zip_code"
-                className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-              >
-                ZIP Code *
-              </label>
-              <GlassInput
-                type="text"
-                id="zip_code"
-                name="zip_code"
-                value={formData.zip_code}
-                onChange={handleInputChange}
-                placeholder="10001"
-                required
-              />
-              {errors.zip_code && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.zip_code}
-                </span>
-              )}
-            </div>
-            <div className="space-y-2">
-              <label
-                htmlFor="city"
-                className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-              >
-                City *
-              </label>
-              <GlassInput
-                type="text"
-                id="city"
-                name="city"
-                value={formData.city}
-                onChange={handleInputChange}
-                placeholder="New York"
-                required
-              />
-              {errors.city && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.city}
-                </span>
-              )}
-            </div>
-            <div className="space-y-2">
-              <label
-                htmlFor="state"
-                className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-              >
-                State *
-              </label>
-              <GlassInput
-                type="text"
-                id="state"
-                name="state"
-                value={formData.state}
-                onChange={handleInputChange}
-                placeholder="NY"
-                required
-              />
-              {errors.state && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.state}
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Country and Country Code */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="space-y-2 md:col-span-2">
-              <label className="block text-sm font-medium text-foreground/90 dark:text-foreground/90">
-                Country *
-              </label>
-              {/* <CountrySelector
-                selectedCountry={selectedCountry}
-                onCountrySelect={handleCountrySelect}
-                placeholder="Select country..."
-                className="h-12"
-              /> */}
-              {errors.country && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.country}
-                </span>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <label
-                htmlFor="country_code"
-                className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-              >
-                Country Code *
-              </label>
-              <GlassInput
-                type="text"
-                id="country_code"
-                name="country_code"
-                value={formData.country_code}
-                placeholder=""
-                className="text-center text-sm"
-                disabled
-                required
-              />
-              {errors.country_code && (
-                <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                  {errors.country_code}
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Business Description */}
-          <div className="space-y-2">
-            <label
-              htmlFor="business_description"
-              className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-            >
-              Business Description *
-            </label>
-            <div className="relative">
-              <FiFileText className="absolute left-3 top-4 text-muted-foreground w-5 h-5 z-10 pointer-events-none" />
-              <textarea
-                id="business_description"
-                name="business_description"
-                value={formData.business_description}
-                onChange={handleInputChange}
-                placeholder="Describe your business activities..."
-                className="w-full pl-12 px-4 py-3 bg-white/10 dark:bg-white/5 border border-gray-200/20 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/40 text-foreground resize-none"
-                rows={3}
-                required
-              />
-            </div>
-            {errors.business_description && (
-              <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                {errors.business_description}
-              </span>
-            )}
-          </div>
-
-          {/* Company Website */}
-          <div className="space-y-2">
-            <label
-              htmlFor="company_website"
-              className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
-            >
-              Company Website
-            </label>
-            <div className="relative">
-              <FiGlobe className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5 z-10 pointer-events-none" />
-              <GlassInput
-                type="url"
-                id="company_website"
-                name="company_website"
-                value={formData.company_website}
-                onChange={handleInputChange}
-                placeholder="e.g. https://www.yourcompany.com"
-                className="pl-12"
-              />
-            </div>
-
-            {errors.company_website && (
-              <span className="text-destructive text-xs mt-1 drop-shadow-sm">
-                {errors.company_website}
-              </span>
-            )}
-          </div>
-        </div>
-
         {/* Terms and Privacy Policy Checkboxes */}
         <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-start space-x-3">
@@ -888,6 +593,7 @@ export default function RegisterTab({}: RegisterTabProps) {
                 <span>Create Partner Account</span>
               </>
             )} */}
+            Create Partner Account
           </div>
         </button>
       </form>
