@@ -18,7 +18,9 @@ const Login = () => {
   const [isLoginLoading] = useState(false);
   const [isVerifyLoading, setIsVerifyLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'login' | 'redeem'>('login');
-
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [isPolicyAccepted, setIsPolicyAccepted] = useState(false);
   // State for OTP modal
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [userEmail, setUserEmail] = useState('');
@@ -323,83 +325,6 @@ const Login = () => {
 
             {/* Subtle Inner Glow */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-400/10 to-transparent pointer-events-none" />
-
-            <div className="relative z-10">
-              {/* Premium Tab Navigation */}
-              <div
-                className="flex bg-black/95 backdrop-blur-xl border border-gray-700/80 rounded-xl p-1 mb-8 shadow-2xl"
-                style={{
-                  boxShadow:
-                    'inset 0 1px 0 rgba(255,255,255,0.05), 0 25px 50px -12px rgba(0,0,0,0.6)',
-                  backdropFilter: 'blur(20px) saturate(180%)',
-                }}
-              >
-                <button
-                  onClick={() => setActiveTab('login')}
-                  className={`flex-1 py-4 px-6 text-center rounded-lg font-semibold transition-all duration-300 relative overflow-hidden group ${
-                    activeTab === 'login'
-                      ? 'bg-gradient-to-br from-gray-800/90 via-gray-700/80 to-gray-600/90 text-white shadow-xl border border-gray-500/30 backdrop-blur-xl'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                  }`}
-                  style={
-                    activeTab === 'login'
-                      ? {
-                          boxShadow:
-                            'inset 0 1px 0 rgba(255,255,255,0.1), 0 15px 30px -8px rgba(0,0,0,0.4)',
-                          backdropFilter: 'blur(20px) saturate(180%)',
-                        }
-                      : {}
-                  }
-                >
-                  {activeTab === 'login' && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  )}
-                  <span className="relative z-10">Login</span>
-                </button>
-                <button
-                  onClick={() => setActiveTab('redeem')}
-                  className={`flex-1 py-4 px-6 text-center rounded-lg font-semibold transition-all duration-300 relative overflow-hidden group ${
-                    activeTab === 'redeem'
-                      ? 'bg-gradient-to-br from-gray-800/90 via-gray-700/80 to-gray-600/90 text-white shadow-xl border border-gray-500/30 backdrop-blur-xl'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                  }`}
-                  style={
-                    activeTab === 'redeem'
-                      ? {
-                          boxShadow:
-                            'inset 0 1px 0 rgba(255,255,255,0.1), 0 15px 30px -8px rgba(0,0,0,0.4)',
-                          backdropFilter: 'blur(20px) saturate(180%)',
-                        }
-                      : {}
-                  }
-                >
-                  {activeTab === 'redeem' && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  )}
-                  <span className="relative z-10">Redeem</span>
-                </button>
-              </div>
-
-              {/* Tab Content with Animation */}
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-              >
-                {activeTab === 'login' ? (
-                  <LoginTab
-                    emailValue={email}
-                    setEmail={setEmail}
-                    emailError={emailError}
-                    isLoginLoading={isLoginLoading}
-                    handleEmailSubmit={handleEmailSubmit}
-                  />
-                ) : (
-                  <RegisterTab />
-                )}
-              </motion.div>
-            </div>
           </motion.div>
 
           {/* Footer */}
@@ -497,6 +422,83 @@ const Login = () => {
           </div>
         </div>
       )}
+      {/* Privacy Policy Modal */}
+      <div className="relative z-10">
+        {/* Premium Tab Navigation */}
+        <div
+          className="flex bg-black/95 backdrop-blur-xl border border-gray-700/80 rounded-xl p-1 mb-8 shadow-2xl"
+          style={{
+            boxShadow:
+              'inset 0 1px 0 rgba(255,255,255,0.05), 0 25px 50px -12px rgba(0,0,0,0.6)',
+            backdropFilter: 'blur(20px) saturate(180%)',
+          }}
+        >
+          <button
+            onClick={() => setActiveTab('login')}
+            className={`flex-1 py-4 px-6 text-center rounded-lg font-semibold transition-all duration-300 relative overflow-hidden group ${
+              activeTab === 'login'
+                ? 'bg-gradient-to-br from-gray-800/90 via-gray-700/80 to-gray-600/90 text-white shadow-xl border border-gray-500/30 backdrop-blur-xl'
+                : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+            }`}
+            style={
+              activeTab === 'login'
+                ? {
+                    boxShadow:
+                      'inset 0 1px 0 rgba(255,255,255,0.1), 0 15px 30px -8px rgba(0,0,0,0.4)',
+                    backdropFilter: 'blur(20px) saturate(180%)',
+                  }
+                : {}
+            }
+          >
+            {activeTab === 'login' && (
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            )}
+            <span className="relative z-10">Login</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('redeem')}
+            className={`flex-1 py-4 px-6 text-center rounded-lg font-semibold transition-all duration-300 relative overflow-hidden group ${
+              activeTab === 'redeem'
+                ? 'bg-gradient-to-br from-gray-800/90 via-gray-700/80 to-gray-600/90 text-white shadow-xl border border-gray-500/30 backdrop-blur-xl'
+                : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+            }`}
+            style={
+              activeTab === 'redeem'
+                ? {
+                    boxShadow:
+                      'inset 0 1px 0 rgba(255,255,255,0.1), 0 15px 30px -8px rgba(0,0,0,0.4)',
+                    backdropFilter: 'blur(20px) saturate(180%)',
+                  }
+                : {}
+            }
+          >
+            {activeTab === 'redeem' && (
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            )}
+            <span className="relative z-10">Redeem</span>
+          </button>
+        </div>
+
+        {/* Tab Content with Animation */}
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+        >
+          {activeTab === 'login' ? (
+            <LoginTab
+              emailValue={email}
+              setEmail={setEmail}
+              emailError={emailError}
+              isLoginLoading={isLoginLoading}
+              handleEmailSubmit={handleEmailSubmit}
+            />
+          ) : (
+            <RegisterTab />
+          )}
+        </motion.div>
+      </div>
     </div>
   );
 };

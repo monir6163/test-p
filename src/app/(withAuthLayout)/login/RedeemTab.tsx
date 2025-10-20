@@ -7,7 +7,6 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import PrivacyPolicyModal from './PrivacyPolicyModal';
 
 interface RegisterTabProps {
   onRegisterSuccess?: () => void;
@@ -1211,13 +1210,6 @@ export default function RegisterTab({}: RegisterTabProps) {
       )}
 
       {/* Privacy Policy Modal */}
-      <PrivacyPolicyModal
-        isOpen={showPrivacyModal}
-        onClose={() => setShowPrivacyModal(false)}
-        onAccept={() =>
-          setFormData((prev) => ({ ...prev, is_policy_accepted: true }))
-        }
-      />
     </>
   );
 }
