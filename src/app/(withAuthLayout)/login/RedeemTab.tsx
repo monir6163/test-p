@@ -1,3 +1,4 @@
+'use client';
 // import { CountryCallingCodeSelector } from '@/components/shared/CountryCallingCodeSelector';
 // import { CountrySelector } from '@/components/shared/CountrySelector';
 import { GlassInput } from '@/components/ui/input';
