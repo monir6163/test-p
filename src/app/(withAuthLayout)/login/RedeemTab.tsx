@@ -273,10 +273,11 @@ export default function RegisterTab({}: RegisterTabProps) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Company Name */}
-        {/* <div className="space-y-2">
+    <>
+      <div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Company Name */}
+          {/* <div className="space-y-2">
           <label
             htmlFor="company_name"
             className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
@@ -302,8 +303,8 @@ export default function RegisterTab({}: RegisterTabProps) {
             </span>
           )}
         </div> */}
-        {/* Account Email */}
-        {/* <div className="space-y-2">
+          {/* Account Email */}
+          {/* <div className="space-y-2">
           <label
             htmlFor="account_email"
             className="block text-sm font-medium text-foreground/90 dark:text-foreground/90"
@@ -329,8 +330,8 @@ export default function RegisterTab({}: RegisterTabProps) {
             </span>
           )}
         </div> */}
-        {/* CEO Details Section */}
-        {/* <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
+          {/* CEO Details Section */}
+          {/* <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
           <h3 className="text-lg font-semibold text-foreground/90 dark:text-foreground/90 border-b border-gray-200/30 dark:border-gray-700/30 pb-2">
             CEO Details
           </h3>
@@ -418,8 +419,8 @@ export default function RegisterTab({}: RegisterTabProps) {
             )}
           </div>
         </div> */}
-        {/* Account Manager Details Section */}
-        {/* <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
+          {/* Account Manager Details Section */}
+          {/* <div className="border border-gray-200/40 dark:border-gray-700/40 rounded-lg p-4 space-y-4 bg-gray-50/20 dark:bg-gray-800/20">
           <h3 className="text-lg font-semibold text-foreground/90 dark:text-foreground/90 border-b border-gray-200/30 dark:border-gray-700/30 pb-2">
             Account Manager Details
           </h3>
@@ -507,82 +508,82 @@ export default function RegisterTab({}: RegisterTabProps) {
             )}
           </div>
         </div> */}
-        {/* Business and Contact Information Section */}
-        {/* Terms and Privacy Policy Checkboxes */}
-        <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-          <div className="flex items-start space-x-3">
-            <input
-              type="checkbox"
-              id="is_terms_accepted"
-              name="is_terms_accepted"
-              checked={formData.is_terms_accepted}
-              onChange={handleInputChange}
-              className="mt-1 h-4 w-4 text-brand-gold bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded focus:ring-brand-gold focus:ring-2"
-              required
-            />
-            <label
-              htmlFor="is_terms_accepted"
-              className="text-sm text-gray-700 dark:text-gray-300 flex-1"
-            >
-              <span>
-                I accept the{' '}
-                <button
-                  type="button"
-                  onClick={() => setShowTermsModal(true)}
-                  className="text-brand-gold hover:text-brand-gold/80 underline hover:no-underline transition-all"
-                >
-                  Terms and Conditions
-                </button>{' '}
-                <span className="text-red-500">*</span>
+          {/* Business and Contact Information Section */}
+          {/* Terms and Privacy Policy Checkboxes */}
+          <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex items-start space-x-3">
+              <input
+                type="checkbox"
+                id="is_terms_accepted"
+                name="is_terms_accepted"
+                checked={formData.is_terms_accepted}
+                onChange={handleInputChange}
+                className="mt-1 h-4 w-4 text-brand-gold bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded focus:ring-brand-gold focus:ring-2"
+                required
+              />
+              <label
+                htmlFor="is_terms_accepted"
+                className="text-sm text-gray-700 dark:text-gray-300 flex-1"
+              >
+                <span>
+                  I accept the{' '}
+                  <button
+                    type="button"
+                    onClick={() => setShowTermsModal(true)}
+                    className="text-brand-gold hover:text-brand-gold/80 underline hover:no-underline transition-all"
+                  >
+                    Terms and Conditions
+                  </button>{' '}
+                  <span className="text-red-500">*</span>
+                </span>
+              </label>
+            </div>
+            {errors.is_terms_accepted && (
+              <span className="text-destructive text-xs ml-7 drop-shadow-sm">
+                {errors.is_terms_accepted}
               </span>
-            </label>
-          </div>
-          {errors.is_terms_accepted && (
-            <span className="text-destructive text-xs ml-7 drop-shadow-sm">
-              {errors.is_terms_accepted}
-            </span>
-          )}
+            )}
 
-          <div className="flex items-start space-x-3">
-            <input
-              type="checkbox"
-              id="is_policy_accepted"
-              name="is_policy_accepted"
-              checked={formData.is_policy_accepted}
-              onChange={handleInputChange}
-              className="mt-1 h-4 w-4 text-brand-gold bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded focus:ring-brand-gold focus:ring-2"
-              required
-            />
-            <label
-              htmlFor="is_policy_accepted"
-              className="text-sm text-gray-700 dark:text-gray-300 flex-1"
-            >
-              <span>
-                I accept the{' '}
-                <button
-                  type="button"
-                  onClick={() => setShowPrivacyModal(true)}
-                  className="text-brand-gold hover:text-brand-gold/80 underline hover:no-underline transition-all"
-                >
-                  Privacy Policy
-                </button>{' '}
-                <span className="text-red-500">*</span>
+            <div className="flex items-start space-x-3">
+              <input
+                type="checkbox"
+                id="is_policy_accepted"
+                name="is_policy_accepted"
+                checked={formData.is_policy_accepted}
+                onChange={handleInputChange}
+                className="mt-1 h-4 w-4 text-brand-gold bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded focus:ring-brand-gold focus:ring-2"
+                required
+              />
+              <label
+                htmlFor="is_policy_accepted"
+                className="text-sm text-gray-700 dark:text-gray-300 flex-1"
+              >
+                <span>
+                  I accept the{' '}
+                  <button
+                    type="button"
+                    onClick={() => setShowPrivacyModal(true)}
+                    className="text-brand-gold hover:text-brand-gold/80 underline hover:no-underline transition-all"
+                  >
+                    Privacy Policy
+                  </button>{' '}
+                  <span className="text-red-500">*</span>
+                </span>
+              </label>
+            </div>
+            {errors.is_policy_accepted && (
+              <span className="text-destructive text-xs ml-7 drop-shadow-sm">
+                {errors.is_policy_accepted}
               </span>
-            </label>
+            )}
           </div>
-          {errors.is_policy_accepted && (
-            <span className="text-destructive text-xs ml-7 drop-shadow-sm">
-              {errors.is_policy_accepted}
-            </span>
-          )}
-        </div>
-        <button
-          type="submit"
-          // disabled={isLoading}
-          className="w-full p-4 bg-white dark:bg-gray-800/50 backdrop-blur-md border border-gray-200/60 dark:border-gray-700/50 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:border-transparent dark:hover:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
-        >
-          <div className="relative z-10 flex items-center gap-3">
-            {/* {isLoading ? (
+          <button
+            type="submit"
+            // disabled={isLoading}
+            className="w-full p-4 bg-white dark:bg-gray-800/50 backdrop-blur-md border border-gray-200/60 dark:border-gray-700/50 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700/50 hover:border-transparent dark:hover:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
+          >
+            <div className="relative z-10 flex items-center gap-3">
+              {/* {isLoading ? (
               <>
                 <ArrowPathIcon className="w-5 h-5 animate-spin" />
                 <span>Creating Partner Account...</span>
@@ -593,11 +594,11 @@ export default function RegisterTab({}: RegisterTabProps) {
                 <span>Create Partner Account</span>
               </>
             )} */}
-            Create Partner Account
-          </div>
-        </button>
-      </form>
-
+              Create Partner Account
+            </div>
+          </button>
+        </form>
+      </div>
       {/* Terms and Conditions Modal */}
       {showTermsModal && (
         <div
@@ -1217,6 +1218,6 @@ export default function RegisterTab({}: RegisterTabProps) {
           setFormData((prev) => ({ ...prev, is_policy_accepted: true }))
         }
       />
-    </div>
+    </>
   );
 }
